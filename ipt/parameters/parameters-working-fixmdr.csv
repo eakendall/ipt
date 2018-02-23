@@ -1,0 +1,41 @@
+param,value,min,max,Comments,Source,Comment,,oldvalue,min,max
+beta,7,2,12,Number of effective TB contacts per infectious person-year ,fit to incidence /notifications,,,5,2,10
+phi,0.6,0.36,0.84,relative transmissibility of TB in HIV + (reflecting propensity to be smear negative),"Corbett, Arch Int Med 2003",,,0.6,0.36,0.84
+prob.MDR,0.055,0.035,0.075,***,,,,,,
+sigma,0.5,0.3,0.7,rate leaving elevated risk for fast progression to active TB,Vynnycky Epidemiol Infect 1997,,,0.5,0.3,0.7
+arttheta,0.7,0.42,0.98,"reduction in mortality and reactivation risk from being on ART, for a given CD4",Low CID 2016,,,0.85,0.7,1
+h2theta,0.6,0.3,0.9,"reduction in reactivation risk, RR h2 vs h3",Lawn AIDS 2006,,,0.63,0.378,0.882
+h1theta,0.25,0.1,0.4,"reduction in reactivation risk, RR h1 vs h3",Lawn AIDS 2006,,,0.25,0.15,0.5
+pi_0,0.04765,0.02859,0.06671,"rate of rapid progression of latent TB after recent infection (HIV negative, or on ART)",Vynnycky and Fine 1997 for HIV-,used value such that proportion of fast progressors is 0.087,,0.04765,0.02859,0.06671
+pi_h,0.8,0.48,1.12,"rate of rapid progression of latent TB after recent infection (HIV positive, not on ART)",Daley 1992 NEJM,,,0.8,0.48,1.12
+epsilon_0,0.0005,0.0002,0.01,rate of slow progression of latent TB to active,Horsburgh CR et al. (2010) Revisiting rates of reactivation tuberculosis: a population-based approach. Am J Respir Crit Care Med 182:420_425.,,,0.0005,0.0003,0.0007
+epsilon_h,0.3,0.1,0.6,"rate of slow progression of latent TB to active, HIV+ CD4<200","Raviglione 1997, aaron 2004 (neither very precise)",,,0.2,0.1,0.5
+tau_d0_h0,0.6,0.3,0.9,"treatment rate drug susceptible, HIV-","who global report 2016 technical appendix, accounting for mort rate but also including self-cures, targeting duration 1.5 = rate .67 - 0.12",,,0.55,0.2,0.77
+tau_d0_h3,1,0.5,1.5,"treatment rate drug susceptible, advanced HIV","who global report 2016 technical appendix, subtracting off (accounting for) tb and hiv mort",,,0.65,0.2,0.91
+tau_d1,0.45,0.3,0.6,treatment rate MDR,assumes average 9 month delay compared to HIV- DS TB,,,0.3,0.18,0.42
+theta,0.6,,,protection from reactivation (HIV+ on Art) from IPT (2 years post),trial,,,0.6,,
+gamma,1,,,1/duration of IPT regimen,trial intervention,,,1,,
+psi,0.5,0.3,0.7,partial protection from (RR of) reinfection after latent infection,"Andrews et al 2012 (CID), For HIV+ Houben et al 2010, Lambert et al 2003, Sonnenberg et al 2001",,,0.5,0.3,0.7
+mu_d,0.03,0.025,0.035,background mortality rate,"Johnson et al, 2013, (rough approximation from this for now and assuming average age is 30)",,,0.03,0.025,0.035
+mu_tb_0,0.09,0.05,0.15,"tb specific excess mortality rate, hiv-",Tiemersma,,,0.08,0.048,0.112
+mu_tb_h,0.25,0.1,0.4,"tb specific excess mortality rate, hiv+","Straetemans, HIV+TB has 2.6x the mortality of HIV alone => 2.6*(0.14+0.03) -0.15-0.03 = .26",,,0.15,0.09,0.21
+mu_h3,0.14,0.08,0.2,"hiv specific excess mortality rate (CD4<200, not on ART)","Anglaret, Badri, Phillips",,,0.14,0.084,0.196
+mu_h2,0.05,0.03,0.07,hiv excess mortality rate,Constitent with Brinkhof et al 2009 estimates 1-3 months after ART,,,0.05,0.03,0.07
+mu_h1,0.01,0.006,0.014,hiv excess mortality rate,"Anglaret, Badri, Phillips",,,0.01,0.006,0.014
+eta0,0.025,0.015,0.035,annual rate of new HIV infection,"UNAIDS 2010 http://www.unaidsrstesa.org/wp-content/uploads/2015/05/UNAids-Profile-South-Africa.pdf-18-Feb.pdf, and ~ KZN and Eastern Cape (estimated more similar to Khay than Western-Cape-wide estimates are), http://sanac.org.za/wp-content/uploads/2016/04/EASTERN-CAPE-ANNUAL-PROGRESS-REPORT_Final.pdf, http://sanac.org.za/wp-content/uploads/2016/05/KZN-PSP-ANNUAL-PROGRESS-Final.pdf, adjusted up for rate in 15-65yo","check tails, and consider higher value with decrease during analysis phase in sensitivity analysis.",,0.025,0.015,0.035
+eta1,0.12,0.072,0.2,rate of HIV progression to CD4<=500 (old value = 0.84),Martinson 2014 and Holmes 2006,,,0.12,0.072,0.168
+eta2,0.3,0.18,0.42,rate of HIV progression from to CD4<=500 to CD4<=200 (old value = 0.126),Martinson 2014 and Holmes 2006,,,0.14,0.084,0.196
+eta3,0.25,0.15,0.35,rate of CD4 rebound (200-500 to >500),Lawn AIDS 2006,,,0.25,0.15,0.35
+eta4,2,1.2,2.8,rate of CD4 rebound (<200 to >200),Lawn AIDS 2006,,,3,1.8,4.2
+chi2_h1,0,0,0,rate of getting ARTs once in given ART compartment (inlcude discount for non-adherence),assume not treating at least for calibration,,,0,0,0
+chi2_h2,0.055,0.01,0.1,rate of getting ARTs once in given ART compartment (inlcude discount for non-adherence),"patten, and PGWC slides: a little under half initiating at cd4>200 in 2010, so initiation rate = decline to <200 rate , * prob of treatment before death once <200, *0.8 with 20% nonadherence ",,,0.04,0.024,0.056
+chi2_h3,0.6,0.3,1,rate of getting ARTs once in given ART compartment (inlcude discount for non-adherence),"patten: ~1/4 (1/2 of those initiating at <200) initiate at <100, so initiation rate ~ rate of decline from 200 to 100 ; 200-450 declines ~25/yr per holmes, but assume faster e.g. 2 years, plus initiation if Ois (30%/year per holmes)",,,0.8,0.48,1.12
+kappa,0,,,prob of IPT initation when starting ART,decided in analyses,,,0,,
+kappa_onart,0,,,rate of on ARTs to initiate IPT (previously 0.1),decided in analyses,,,0,,
+rho,0.6,0.3,0.84,proportion of 15 years with LTBI,"based on Mahomed, H et al (in a slighlty lower prevalence setting)",,,0.6,0.36,0.95
+art_screen,1,,,indicator for whether all ART initiators are screened for Active TB,,,,1,,
+sens_xpert,0.73,0.65,0.81,,"Lawn et al, 2013, PLoS Med",,,0.73,0.65,0.81
+default_acf,0.18,0.108,0.252,,Initial default based on McPherson 2013,,,0.18,0.108,0.252
+default_artatb,0.42,0.252,0.588,proportion with untreated HIV being treated for TB who don't also start ART during TB therapy,"rincrease from 44$ to 75% end of TB rx ART coverage, among those not on ART at the start, 2009-2015",,,0.1,0.1,0.5
+ipt_screen,1,,,,,,,1,,
+inf_on_ipt,0,,,relative risk of infection while on IPT (set to zero!),,,,0,,
